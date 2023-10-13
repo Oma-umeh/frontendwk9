@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher</title>
+</head>
+<body>
+    <main>
+        <input type="text" name="pali" id="pali" placeholder="test for a cipher">
+        <button>Cipher</button>
+        <p></p>
+    </main>
+</body>
+<script>
+    const btn = document.querySelector('button')
+    const input = document.querySelector('input')
+    const para = document.querySelector('p')
+
+    const palCheck = () => {
+        let val = (input.value).toUpperCase()
+        val = val.split('')
+        // create an Array of A-N and N-Z
+        let arr = []
+        let str1 = 'ABCDEFGHIJKLM'
+        let str2 = 'NOPQRSTUVWXYS'
+        // write a regex to text if a character is an alphabet
+        let regex = /[A-Z]/
+        // loop through each character in the input text to test if it matches the regex
+        val.map(x => (
+            str1.includes(x) ? arr.push(str2[str1.indexOf(x)]) : str2.includes(x) ? arr.push(str1[str2.indexOf(x)]): arr.push(x)
+        ))
+        // create an empty Array
+        // if it matches, check if th character exist in any of the loop, and return the equivalent in either into the Array
+        // if it does not match either, return the number into the array
+
+        para.innerText = arr.join('')
+    }
+
+    btn.addEventListener('click', palCheck)
+    </script>
+</body>
+</html>
